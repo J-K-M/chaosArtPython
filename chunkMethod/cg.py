@@ -11,13 +11,15 @@ class ChaosGenerator:
 
         self.numPoints = 1000000
         self.scale = width*0.2
-        self.pixelSize = 0.5 # actual pixel size is double this value
+        self.pixelSize = 1
         self.pixelColourFunc = lambda i, n: ( 
             int(128*(i/n)+128),     # R
             int(128*(i/n)+128),     # G
             int(220 - 128*(i/n)),   # B
             int(50)                 # A
         )
+        self.xFunc = lambda x, y, t: -x**2 -t**2 + x*t - y*t - x
+        self.yfunc = lambda x, y, t: -x**2 -t**2 + x*t - x - y
 
         self.baseImage = Image.new("RGB", (self.width, self.height), self.backgroundColour)
         self.draw = ImageDraw.Draw(self.baseImage, mode="RGBA")
@@ -29,9 +31,6 @@ class ChaosGenerator:
 
         self.running = None
 
-        self.xFunc = lambda x, y, t: -x**2 -t**2 + x*t - y*t - x
-        self.yfunc = lambda x, y, t: -x**2 -t**2 + x*t - x - y
-        
 
     def generateEquations(self, code):
         print(code)
@@ -39,35 +38,6 @@ class ChaosGenerator:
     def generateCode(self):
         print(self.xFunc)
         print(self.yfunc)
-
-
-    def updateImage(self, t=0):
-        self.draw.rectangle((0,0,self.width,self.height), fill=self.backgroundColour)
-        x, y = t, t
-
-        for i in range(self.numPoints):
-            if x < self.width and y < self.height:
-                self.draw.rectangle(
-                    (
-                        (x*self.scale + self.width/2) - 0.5,
-                        (y*self.scale + self.height/2) - 0.5,
-                        (x*self.scale + self.width/2) + 0.5,
-                        (y*self.scale + self.height/2) + 0.5,
-                    ),
-                    fill=self.pixelColourFunc(i, self.numPoints)
-                )
-
-                try:
-                    nx = self.xFunc(x,y,t)
-                    ny = self.yfunc(x,y,t)
-
-                    x, y = nx, ny
-                except OverflowError:
-                    pass
-                
-        
-        self.tkImage = ImageTk.PhotoImage(self.baseImage)
-        self.l.configure(image = self.tkImage)
 
 
     def updateImagePoints(self, t=0, x=0, y=0, count=0, pixelNum=1000):
@@ -80,14 +50,19 @@ class ChaosGenerator:
 
         for i in range(pixelNum):
             if x < self.width and y < self.height:
-                self.draw.rectangle(
-                    (
-                        (x*self.scale + self.width/2) - self.pixelSize,
-                        (y*self.scale + self.height/2) - self.pixelSize,
-                        (x*self.scale + self.width/2) + self.pixelSize,
-                        (y*self.scale + self.height/2) + self.pixelSize,
-                    ),
-                    fill=self.pixelColourFunc(count, self.numPoints)
+
+                x1 = int(x*self.scale + self.width/2)  #- self.pixelSize/2
+                y1 = int(y*self.scale + self.height/2) #- self.pixelSize/2
+                x2 = x1 + self.pixelSize
+                y2 = y1 + self.pixelSize
+                self.draw.point(
+                    ( x1, y1),
+                    fill=( 
+                        255,  # R
+                        255,  # G
+                        255,  # B
+                        30    # A
+                    )
                 )   
                 count += 1
 
