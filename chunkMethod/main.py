@@ -9,7 +9,7 @@ root.rowconfigure(2, weight=1)
 root.columnconfigure(0, weight=1)
 root.columnconfigure(2, weight=1)
 
-cg = ChaosGenerator(root)
+cg = ChaosGenerator(root, width=1500, height=900)
 cg.f.grid(row=1,column=1)
 
 scaleRes = 0.0001
