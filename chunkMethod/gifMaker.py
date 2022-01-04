@@ -4,28 +4,27 @@ import sys, cv2
 
 
 def main():
-    # These two functions control the resulting shape
-    xFunc = lambda x, y, t: -x**2 -t**2 + x*t - y*t - x
-    yFunc = lambda x, y, t: -x**2 -t**2 + x*t - x - y
-
     # These perameters let you tweak the gif
-    tMin = -0.5                 # the range for the t variable
-    tMax = 0.2
-    gifLength = 5               # seconds
+    tMin, tMax = -0.3, -0.1     # the range for the t variable
+    gifLength = 15              # seconds
     pointDepth = 100000         # num of points that are drawn per frame
-    pointSize = 1               # size of each point (in pixels)
     pointOpacity = 50           # 0-255
-    resolution = (1500, 1500)   # W, H (in pixels)
+    resolution = (1000, 1000)   # W, H (in pixels)
     center = (0.6, 0.5)         # ratio of W,  ratio of Y
     scale = 0.3                 # adjusts size of shape
     gifOrVid = "vid"            # output gif or video file (vid, gif, or g&v)
-    fileName = "shape1"         # name for output file
+    fileName = "./output/test1"  # name for output file
 
     # Everything beyond here is best untouched
     stepSize = (tMax - tMin) / (24 * gifLength)
     frames = []
     t = tMin
     pFlip = True
+
+    actualScale = scale*resolution[1]
+    xCenter = resolution[0]*center[0]
+    yCenter = resolution[1]*center[1]
+
     print("Rendering Frames...")
     while t < tMax:
         t += stepSize
@@ -41,22 +40,16 @@ def main():
                 continue
 
             try:
-                nx = xFunc(x,y,t)
-                ny = yFunc(x,y,t)
+                nx = -x**2 -t**2 + x*t - y*t - x
+                ny = -x**2 -t**2 + x*t - x - y
             except OverflowError:
                 pass
 
             x, y = nx, ny
-            
-            actualScale = scale*resolution[1]
-            xCenter = resolution[0]*center[0]
-            yCenter = resolution[1]*center[1]
-            draw.rectangle(
+            draw.point(
                 (
                     x*actualScale + xCenter,
                     y*actualScale + yCenter,
-                    x*actualScale + xCenter + pointSize,
-                    y*actualScale + yCenter + pointSize
                 ),
                 fill=(255,255,255,pointOpacity)
             )
