@@ -1,16 +1,24 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import Image,ImageDraw,ImageTk
-from random import randint
 
 class ChaosGenerator:
-    def __init__(self, parentWindow, width=1280, height=720, 
-                scale=0.2, xOffset=0.5, yOffset=0.5, previewScale=2) -> None:
+    def __init__(self, parentWindow, 
+                xFunc, yFunc,
+                width=1280, height=720, 
+                scale=0.2, xOffset=0.5, 
+                yOffset=0.5, previewScale=2 ) -> None:
+
+
+        # It is slightly less efficient to place the functions here like this
+        # However it makes them easier to change, and it's not a big difference
+        self.xFunc = xFunc
+        self.yFunc = yFunc
 
         self.parentWindow = parentWindow
         self.width = width
         self.height = height
-        self.backgroundColour = (10,10,12)
+        self.backgroundColour = (5,5,7)
 
         self.numPoints = 1000000
         self.xScale = width * scale
@@ -45,12 +53,12 @@ class ChaosGenerator:
 
     def updateImagePoints(self, t=0, x=0, y=0, count=0, pixelNum=20000):
         if count == 0:
-            opacity = 60 # Higher opacity on first pass for clearer preview
+            opacity = 80 # Higher opacity on first pass for clearer preview
             self.draw.rectangle(
                 (0,0,self.width,self.height), 
                 fill=self.backgroundColour)      # Clears points
         else:
-            opacity = 20
+            opacity = 40
 
         for i in range(pixelNum):
             if x < self.width and y < self.height:
@@ -69,13 +77,14 @@ class ChaosGenerator:
                     )   
                     count += 1
 
-                    nx = -x**2 -t**2 + x*t - y*t - x
-                    ny = -x**2 -t**2 + x*t - x - y
+                    nx = self.xFunc(x,y,t)
+                    ny = self.yFunc(x,y,t)
 
                     x, y = nx, ny
                 except:
-                    pass
-        
+                    count += 1  # So the counter still goes up even  points
+                                # are off screen.
+
         self.draw.rectangle(
             (self.left, self.bottom, self.right, self.top), 
             fill="white"
