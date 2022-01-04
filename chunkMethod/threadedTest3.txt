@@ -1,0 +1,96 @@
+Rendering Frames...
+
+  0% <Thread(Thread-1, started 140245067802368)>
+<Thread(Thread-2, started 140245076195072)>
+<Thread(Thread-3, started 140245084587776)>
+<Thread(Thread-4, started 140244753303296)>
+<Thread(Thread-5, started 140244740110080)>
+<Thread(Thread-6, started 140244726916864)>
+<Thread(Thread-7, started 140244372420352)>
+<Thread(Thread-8, started 140244364027648)>
+<Thread(Thread-9, started 140244346033920)>
+<Thread(Thread-10, started 140244332840704)>
+...............................Thread: 7 done.
+.Thread: 6 done.
+Thread: 1 done.
+Thread: 9 done.
+Thread: 0 done.
+Thread: 4 done.
+Thread: 2 done.
+Thread: 8 done.
+Thread: 5 done.
+Thread: 3 done.
+all threads done
+
+360 frames generated.
+Saving video...
+         29046539 function calls (29046179 primitive calls) in 111.726 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.126    0.126  111.726  111.726 <string>:1(<module>)
+      360    0.001    0.000    0.002    0.000 Image.py:269(_conv_type_shape)
+      360    0.003    0.000    0.004    0.000 Image.py:436(_getencoder)
+      720    0.001    0.000    0.001    0.000 Image.py:537(__getattr__)
+     1080    0.000    0.000    0.000    0.000 Image.py:556(size)
+      360    0.007    0.000    1.254    0.003 Image.py:684(__array__)
+      360    0.001    0.000    0.001    0.000 Image.py:700(ArrayData)
+      360    0.017    0.000    1.067    0.003 Image.py:720(tobytes)
+      360    0.001    0.000    0.002    0.000 Image.py:814(load)
+       10    0.000    0.000    0.000    0.000 _weakrefset.py:38(_remove)
+       10    0.000    0.000    0.000    0.000 _weakrefset.py:81(add)
+        1    0.012    0.012    8.446    8.446 threadedGifMaker.py:122(outputFile)
+        1   20.201   20.201  111.600  111.600 threadedGifMaker.py:43(main)
+        1    0.000    0.000    0.000    0.000 threadedGifMaker.py:45(<listcomp>)
+       10    0.000    0.000    0.000    0.000 threading.py:1017(_wait_for_tstate_lock)
+       10    0.000    0.000    0.000    0.000 threading.py:1071(is_alive)
+       10    0.000    0.000    0.000    0.000 threading.py:1095(daemon)
+       10    0.000    0.000    0.000    0.000 threading.py:1177(_make_invoke_excepthook)
+       10    0.000    0.000    0.000    0.000 threading.py:1306(current_thread)
+  9665482   80.520    0.000   82.111    0.000 threading.py:1320(active_count)
+       10    0.000    0.000    0.000    0.000 threading.py:222(__init__)
+       10    0.000    0.000    0.000    0.000 threading.py:246(__enter__)
+       10    0.000    0.000    0.000    0.000 threading.py:249(__exit__)
+       10    0.000    0.000    0.000    0.000 threading.py:255(_release_save)
+       10    0.000    0.000    0.000    0.000 threading.py:258(_acquire_restore)
+       10    0.000    0.000    0.000    0.000 threading.py:261(_is_owned)
+       10    0.000    0.000    0.841    0.084 threading.py:270(wait)
+       10    0.000    0.000    0.000    0.000 threading.py:505(__init__)
+       30    0.000    0.000    0.000    0.000 threading.py:513(is_set)
+       10    0.000    0.000    0.841    0.084 threading.py:540(wait)
+       10    0.000    0.000    0.000    0.000 threading.py:734(_newname)
+       10    0.000    0.000    0.001    0.000 threading.py:761(__init__)
+       10    0.000    0.000    0.000    0.000 threading.py:820(__repr__)
+       10    0.000    0.000    0.842    0.084 threading.py:834(start)
+        1    0.000    0.000    0.000    0.000 {VideoWriter_fourcc}
+      360    0.001    0.000    0.001    0.000 {built-in method PIL._imaging.raw_encoder}
+       20    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+       10    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+       10    0.001    0.000    0.001    0.000 {built-in method _thread.start_new_thread}
+      360    0.009    0.000    0.010    0.000 {built-in method builtins.__build_class__}
+        1    0.000    0.000  111.726  111.726 {built-in method builtins.exec}
+      360    0.001    0.000    0.001    0.000 {built-in method builtins.getattr}
+      360    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+ 19331325    1.591    0.000    1.591    0.000 {built-in method builtins.len}
+      360    0.001    0.000    0.001    0.000 {built-in method builtins.max}
+       14    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+  720/360    0.827    0.001    1.914    0.005 {built-in method numpy.array}
+      360    0.310    0.001    0.310    0.001 {cvtColor}
+       10    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+       10    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+       50    0.841    0.017    0.841    0.017 {method 'acquire' of '_thread.lock' objects}
+       10    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+       10    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+    20890    0.003    0.000    0.003    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       10    0.000    0.000    0.000    0.000 {method 'discard' of 'set' objects}
+    20160    0.442    0.000    0.442    0.000 {method 'encode' of 'ImagingEncoder' objects}
+      360    0.598    0.002    0.598    0.002 {method 'join' of 'bytes' objects}
+      360    0.001    0.000    0.001    0.000 {method 'pixel_access' of 'ImagingCore' objects}
+       10    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.052    0.052    0.052    0.052 {method 'release' of 'cv2.VideoWriter' objects}
+      360    0.001    0.000    0.001    0.000 {method 'setimage' of 'ImagingEncoder' objects}
+      360    6.158    0.017    6.158    0.017 {method 'write' of 'cv2.VideoWriter' objects}
+
+

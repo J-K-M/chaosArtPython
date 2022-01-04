@@ -1,0 +1,112 @@
+Rendering Frames...
+<Thread(Thread-1, started 140532532578048)>
+<Thread(Thread-2, started 140532574525184)>
+<Thread(Thread-3, started 140532582917888)>
+<Thread(Thread-4, started 140532254029568)>
+<Thread(Thread-5, started 140532241635072)>
+<Thread(Thread-6, started 140532229240576)>
+<Thread(Thread-7, started 140532216846080)>
+<Thread(Thread-8, started 140531732576000)>
+
+  0% Thread: 8 done.
+........................Thread: 6 done.
+Thread: 5 done.
+.Thread: 3 done.
+Thread: 4 done.
+Thread: 1 done.
+.Thread: 2 done.
+.Thread: 7 done.
+...........Thread: 0 done.
+all threads done
+
+361 frames generated.
+Saving video...
+         22545404 function calls (22545043 primitive calls) in 154.952 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.135    0.135  154.952  154.952 <string>:1(<module>)
+       45    0.000    0.000    0.000    0.000 Image.py:2651(_check_size)
+       45    0.001    0.000    2.804    0.062 Image.py:2669(new)
+      361    0.002    0.000    0.003    0.000 Image.py:269(_conv_type_shape)
+      361    0.004    0.000    0.006    0.000 Image.py:436(_getencoder)
+       90    0.001    0.000    0.001    0.000 Image.py:524(__init__)
+      767    0.002    0.000    0.002    0.000 Image.py:537(__getattr__)
+     1083    0.001    0.000    0.001    0.000 Image.py:556(size)
+       45    0.001    0.000    0.001    0.000 Image.py:560(_new)
+      361    0.012    0.000    1.458    0.004 Image.py:684(__array__)
+      361    0.001    0.000    0.001    0.000 Image.py:700(ArrayData)
+      361    0.025    0.000    1.208    0.003 Image.py:720(tobytes)
+      406    0.002    0.000    0.003    0.000 Image.py:814(load)
+  4500000   40.055    0.000   43.239    0.000 ImageDraw.py:101(_getink)
+  4500000   34.835    0.000   80.683    0.000 ImageDraw.py:232(point)
+       45    0.000    0.000    0.001    0.000 ImageDraw.py:47(__init__)
+       45    0.001    0.000    0.002    0.000 ImageDraw.py:756(Draw)
+        8    0.000    0.000    0.000    0.000 _weakrefset.py:38(_remove)
+        8    0.000    0.000    0.000    0.000 _weakrefset.py:81(add)
+       45    0.000    0.000    0.615    0.014 gifMaker.py:110(p10print)
+        1    0.013    0.013   10.473   10.473 gifMaker.py:121(outputFile)
+        1    0.001    0.001  154.817  154.817 gifMaker.py:43(main)
+        1    0.000    0.000    0.000    0.000 gifMaker.py:45(<listcomp>)
+        1   59.496   59.496  143.599  143.599 gifMaker.py:74(renderSubRange)
+        8    0.000    0.000    0.000    0.000 threading.py:1017(_wait_for_tstate_lock)
+        8    0.000    0.000    0.000    0.000 threading.py:1071(is_alive)
+        8    0.000    0.000    0.000    0.000 threading.py:1095(daemon)
+        8    0.000    0.000    0.000    0.000 threading.py:1177(_make_invoke_excepthook)
+        8    0.000    0.000    0.000    0.000 threading.py:1306(current_thread)
+        1    0.000    0.000    0.000    0.000 threading.py:1320(active_count)
+        8    0.000    0.000    0.000    0.000 threading.py:222(__init__)
+        8    0.000    0.000    0.000    0.000 threading.py:246(__enter__)
+        8    0.000    0.000    0.000    0.000 threading.py:249(__exit__)
+        8    0.000    0.000    0.000    0.000 threading.py:255(_release_save)
+        8    0.000    0.000    0.000    0.000 threading.py:258(_acquire_restore)
+        8    0.000    0.000    0.000    0.000 threading.py:261(_is_owned)
+        8    0.000    0.000    0.742    0.093 threading.py:270(wait)
+        8    0.000    0.000    0.000    0.000 threading.py:505(__init__)
+       24    0.000    0.000    0.000    0.000 threading.py:513(is_set)
+        8    0.000    0.000    0.742    0.093 threading.py:540(wait)
+        8    0.000    0.000    0.000    0.000 threading.py:734(_newname)
+        8    0.000    0.000    0.001    0.000 threading.py:761(__init__)
+        8    0.000    0.000    0.000    0.000 threading.py:820(__repr__)
+        8    0.000    0.000    0.743    0.093 threading.py:834(start)
+        1    0.000    0.000    0.000    0.000 {VideoWriter_fourcc}
+       45    0.000    0.000    0.000    0.000 {built-in method PIL._imaging.draw}
+       45    2.801    0.062    2.801    0.062 {built-in method PIL._imaging.fill}
+      361    0.001    0.000    0.001    0.000 {built-in method PIL._imaging.raw_encoder}
+       16    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        8    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        8    0.001    0.000    0.001    0.000 {built-in method _thread.start_new_thread}
+      361    0.014    0.000    0.015    0.000 {built-in method builtins.__build_class__}
+       90    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
+        1    0.000    0.000  154.952  154.952 {built-in method builtins.exec}
+      361    0.001    0.000    0.001    0.000 {built-in method builtins.getattr}
+  4500451    0.883    0.000    0.883    0.000 {built-in method builtins.isinstance}
+      409    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+      361    0.001    0.000    0.001    0.000 {built-in method builtins.max}
+       13    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+  722/361    0.877    0.001    2.117    0.006 {built-in method numpy.array}
+      361    0.330    0.001    0.330    0.001 {cvtColor}
+        8    0.000    0.000    0.000    0.000 {method '__enter__' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+       40    0.741    0.019    0.741    0.019 {method 'acquire' of '_thread.lock' objects}
+        8    0.000    0.000    0.000    0.000 {method 'add' of 'set' objects}
+        8    0.000    0.000    0.000    0.000 {method 'append' of 'collections.deque' objects}
+    18103    0.005    0.000    0.005    0.000 {method 'append' of 'list' objects}
+       45    0.000    0.000    0.000    0.000 {method 'copy' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        8    0.000    0.000    0.000    0.000 {method 'discard' of 'set' objects}
+  4500045    2.302    0.000    2.302    0.000 {method 'draw_ink' of 'ImagingDraw' objects}
+  4500000    2.609    0.000    2.609    0.000 {method 'draw_points' of 'ImagingDraw' objects}
+    17328    0.516    0.000    0.516    0.000 {method 'encode' of 'ImagingEncoder' objects}
+       39    0.614    0.016    0.614    0.016 {method 'flush' of '_io.TextIOWrapper' objects}
+      361    0.651    0.002    0.651    0.002 {method 'join' of 'bytes' objects}
+      406    0.001    0.000    0.001    0.000 {method 'pixel_access' of 'ImagingCore' objects}
+        1    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+        8    0.000    0.000    0.000    0.000 {method 'release' of '_thread.lock' objects}
+        1    0.001    0.001    0.001    0.001 {method 'release' of 'cv2.VideoWriter' objects}
+      361    0.001    0.000    0.001    0.000 {method 'setimage' of 'ImagingEncoder' objects}
+       39    0.000    0.000    0.000    0.000 {method 'write' of '_io.TextIOWrapper' objects}
+      361    8.012    0.022    8.012    0.022 {method 'write' of 'cv2.VideoWriter' objects}
+
+
