@@ -2,23 +2,26 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import cv2
 import sys
-from multiprocessing import Pool
+from multiprocessing import Pool, set_start_method
 import time
 
+# set_start_method("fork") # potentially fixes a bug on macOS
+
 # These parameters let you tweak the gif
-tMin, tMax = -0.2, -0.15    # the range for the t variable
-gifLength = 10              # seconds
+tMin, tMax = 0.9, 1.0    # the range for the t variable
+gifLength = 2              # seconds
 pointDepth = 1000000        # num of points that are drawn per frame
-pointOpacity = 50           # 0-255
-resolution = (1500, 1200)   # W, H (in pixels)
-center = (0.6, 0.5)         # ratio of W,  ratio of Y
-scale = 0.3                 # adjusts size of shape
-gifOrVid = "vid"            # output gif or video file (vid, gif, or g&v)
+pointOpacity = 40           # 0-255
+resolution = (1920, 1080)   # W, H (in pixels)
+center = (0.35, 0.7)         # ratio of W,  ratio of H
+scale = 0.26                 # adjusts size of shape
+gifOrVid = "v"            # output gif or video file (vid, gif, or g&v)
 embedFuncs = True           # embed the functions in the top left of the video
 numProcesses = 4
 
-xFunc = "-x**2 -t**2 + x*t - y*t - x"
-yFunc = "-x**2 -t**2 + x*t - x - y"
+xFunc = "y**2 + t**2 - x - t"
+yFunc = "-t**2 + x*t + y*t"
+
 
 # Everything beyond here is best untouched
 userInput = input(f"Name for {gifOrVid}: ")
@@ -77,14 +80,13 @@ def main():
     ]
     results = [w.get() for w in workers]
 
-    print("\nflattening frame list...")
     outputImages = []
     for list in results:
         for item in list:
             outputImages.append(item)
 
     timeToComplete = round(time.time()-startTime, 3)
-    print(f"{len(outputImages)} frames generated in {timeToComplete} seconds.")
+    print(f"\n{len(outputImages)} frames generated in {timeToComplete} seconds.")
     outputFile(outputImages, gifOrVid, fileName, resolution)
 
 def renderSubRange(TsubRange: list, processNum: int) -> list:
@@ -109,8 +111,8 @@ def renderSubRange(TsubRange: list, processNum: int) -> list:
                     continue
 
                 try:
-                    nx = -x**2 -t**2 + x*t - y*t - x
-                    ny = -x**2 -t**2 + x*t - x - y
+                    nx = y**2 + t**2 - x - t
+                    ny = -t**2 + x*t + y*t
                 except OverflowError:
                     pass
 
@@ -129,8 +131,8 @@ def renderSubRange(TsubRange: list, processNum: int) -> list:
 
 
 def outputFile(frames, gifOrVid, fileName, resolution):
-    if gifOrVid == "gif" or gifOrVid == "g&v":
-        print("Saving gif...")
+    if "g" in gifOrVid:
+        print(f"Saving '{fileName}.gif' ...")
         frames[0].save(
             f"{fileName}.gif",
             save_all = True, 
@@ -139,10 +141,10 @@ def outputFile(frames, gifOrVid, fileName, resolution):
             duration = 1000/24, 
             loop = 0
         )
-    elif gifOrVid == "vid" or gifOrVid == "g&v":
-        print("Saving video...")
-        fourcc = cv2.VideoWriter_fourcc(*"MJPG")
-        video = cv2.VideoWriter(f"{fileName}.avi", fourcc, 24, resolution)
+    if "v" in gifOrVid:
+        print(f"Saving '{fileName}.mp4' ...")
+        fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+        video = cv2.VideoWriter(f"{fileName}.mp4", fourcc, 24, resolution)
         vidFrames = []
         for frame in frames:
             vidFrames.append(np.array(frame))
@@ -150,9 +152,11 @@ def outputFile(frames, gifOrVid, fileName, resolution):
             video.write(cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
         video.release()
     else:
-        print("gifOrVid value invalid")
+        print(
+        "gifOrVid value invalid. Should contain 'g' and/or 'v' characters."
+        )
     
-    print("Done")
+    print("Done.")
 
 if __name__ == "__main__":
     main()
