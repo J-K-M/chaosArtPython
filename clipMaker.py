@@ -15,7 +15,7 @@ center = (0.35, 0.7)        # ratio of W,  ratio of H
 scale = 0.26                # adjusts size of shape
 gifOrVid = "v"              # output gif or video file (vid, gif, or g&v)
 embedFuncs = True           # embed the functions in the top left of the video
-numProcesses = multiprocessing.cpu_count()
+numProcesses = cpu_count()
 
 # These are the text labels for the functions that are displayed if embedFuncs
 # is set to True. The actual functions are on lines 122 and 123 and must be 
