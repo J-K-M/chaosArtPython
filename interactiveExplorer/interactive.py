@@ -52,7 +52,7 @@ root.bind("k", lambda e: s.set(s.get()+scaleRes))
 def saveImage():
     img = cg.baseImage
     fileName = simpledialog.askstring("Save Image", "file name: ")
-    fileName = f"./images/{fileName}.png"
+    fileName = f"./output/{fileName}.png"
     print(f"file saved to {fileName}.png")
     print(fileName)
     img.save(fileName,"PNG")
