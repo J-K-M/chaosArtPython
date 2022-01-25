@@ -3,8 +3,11 @@ from tkinter import simpledialog
 from cg import ChaosGenerator
 
 
-xFunc = lambda x,y,t: -y**2 - x*t + y
-yFunc = lambda x,y,t: x**2 - x*y + t
+xFuncText = "-y**2 - x*t + y"
+yFuncText = "x**2 - x*y + t"
+
+yFunc = eval("lambda x,y,t: " + yFuncText)
+xFunc = eval("lambda x,y,t: " + xFuncText)
 
 sFrom, sTo = -0.45, -0.35
 scaleRes = 0.0001
