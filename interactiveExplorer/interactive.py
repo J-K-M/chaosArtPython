@@ -4,11 +4,10 @@ from cg import ChaosGenerator
 
 
 xFuncText = "-y**2 - x*t + y"
-xFunc = eval("lambda x,y,t: " + xFuncText)
-
 yFuncText = "x**2 - x*y + t"
-yFunc = eval("lambda x,y,t: " + yFuncText)
 
+yFunc = eval("lambda x,y,t: " + yFuncText)
+xFunc = eval("lambda x,y,t: " + xFuncText)
 
 sFrom, sTo = -0.45, -0.35
 scaleRes = 0.0001
@@ -60,6 +59,8 @@ def saveImage():
     img.save(fileName,"PNG")
 
 # Info along top, and button to save image
+xFuncText = inspect.getsource(xFunc).split(":")[1].rstrip("\n")
+yFuncText = inspect.getsource(yFunc).split(":")[1].rstrip("\n")
 Label(root,text=f"{cg.numPoints:,} points"
     ).grid(row=1, column=1, sticky="W")
 Label(root,text=f"x' = {xFuncText}"
