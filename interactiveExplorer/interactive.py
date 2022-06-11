@@ -59,8 +59,8 @@ def saveImage():
     img.save(fileName,"PNG")
 
 # Info along top, and button to save image
-xFuncText = inspect.getsource(xFunc).split(":")[1].rstrip("\n")
-yFuncText = inspect.getsource(yFunc).split(":")[1].rstrip("\n")
+# xFuncText = inspect.getsource(xFunc).split(":")[1].rstrip("\n")
+# yFuncText = inspect.getsource(yFunc).split(":")[1].rstrip("\n")
 Label(root,text=f"{cg.numPoints:,} points"
     ).grid(row=1, column=1, sticky="W")
 Label(root,text=f"x' = {xFuncText}"
